@@ -1,23 +1,29 @@
 import React from "react";
-import { View, TouchableOpacity, StyleSheet } from "react-native";
-
-
+import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 
 
 const Home = ({navigation}) => {
-  const titleMessage = "Login";
   return (
     <View style={styles.container}>
       <TouchableOpacity
-        title={titleMessage}
         style={styles.button}
         onPress={() => navigation.navigate("Login")}
-      />
-      <TouchableOpacity style={styles.button} />
-      <TouchableOpacity style={styles.button} />
+      >
+        <Text style={styles.text}>Login</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate("Signup")}
+      >
+        <Text style={styles.text}>Registro</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.text}>Empezar</Text>
+      </TouchableOpacity>
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
@@ -27,7 +33,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   text: {
-    fontSize: 40,
+    fontSize: 30,
     fontFamily: "indie-flower",
   },
   button: {

@@ -1,4 +1,4 @@
-import { StatusBar } from "expo-status-bar";
+//import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { useState, useEffect } from "react";
 import * as Font from "expo-font";
@@ -7,19 +7,13 @@ import React from "react";
 import LoginPage from "./components/Login/LoginPage";
 import MainMenu from "./components/MainMenu";
 import Home from "./components/Home";
+import SignUpPage from "./components/Signup/SignUpPage"
 
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 const Stack = createNativeStackNavigator();
 
-
-//import { createBrowserHistory} from "history";
-//import { render } from "react-dom";
-//import { Switch } from "react-native";
-
-//const history = createBrowserHistory();
-//const rootElement = document.getElementById("root");
 
 export default function App() {
   const [loadedFonts, setLoadedFonts] = useState(false);
@@ -43,7 +37,7 @@ export default function App() {
   }
   
   return (
-    //<View style={styles.container}>
+    
     
     <NavigationContainer>
       <Stack.Navigator>
@@ -51,15 +45,11 @@ export default function App() {
         <Stack.Group name="/">
           <Stack.Screen name="Login" component={LoginPage} />
           <Stack.Screen name="Main" component={MainMenu} />
+          <Stack.Screen name="Signup" component={SignUpPage}/>
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>
 
-    //rootElement
-    // <View style={styles.container}>
-    //   <Text style={styles.text}>LOS PINGÜINITOS</Text>
-    //   <StatusBar style="auto" />
-    // </View>
   );
 }
 

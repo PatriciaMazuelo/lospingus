@@ -5,12 +5,13 @@ import {
   TextInput,
   View,
   SafeAreaView,
+  ImageBackground,
 } from "react-native";
 import { login } from "./loginService";
 
 const Separator = () => <View style={styles.separator} />;
 
-const LoginPage = ({navigation}) => {
+const LoginPage = ({ navigation }) => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -18,39 +19,36 @@ const LoginPage = ({navigation}) => {
 
   const titleMessage = "Login";
 
-
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const loginData = {name, password}
+    const loginData = { name, password };
     try {
-      console.log(loginData);
       await login(loginData);
-      console.log("Logged!!")
-      navigation.navigate("Main")
+      navigation.navigate("Main");
     } catch (err) {
-      
       console.log(err);
     }
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <TextInput
-        //value={text}
-        style={styles.input}
-        //onChangeText={handleChange}
-        onChangeText={(text) => setName(text)}
-      ></TextInput>
-      <TextInput
-        //value={text}
-        secureTextEntry={true}
-        style={styles.input}
-        //onChangeText={handleChange}
-        onChangeText={(text) => setPassword(text)}
-      ></TextInput>
+      <ImageBackground
+        source={require("../../assets/276026780_1358944547914510_7212570213381634955_n.png")}
+        style={styles.image}
+      >
+        <TextInput
+          style={styles.input}
+          onChangeText={(text) => setName(text)}
+        ></TextInput>
+        <TextInput
+          secureTextEntry={true}
+          style={styles.input}
+          onChangeText={(text) => setPassword(text)}
+        ></TextInput>
 
-      <Button color="#C5F5CB" title={titleMessage} onPress={handleSubmit} />
-      <Separator />
+        <Button color="#66FF66" title={titleMessage} onPress={handleSubmit} />
+        <Separator />
+      </ImageBackground>
     </SafeAreaView>
   );
 };
@@ -67,11 +65,16 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "#E0E0E0",
     padding: 10,
+    backgroundColor: "#ffff"
   },
   separator: {
     marginVertical: 8,
     borderBottomColor: "#737373",
     borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  image: {
+    width: 350,
+    height: 590,
   },
 });
 
